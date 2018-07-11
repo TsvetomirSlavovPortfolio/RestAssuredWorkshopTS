@@ -14,7 +14,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class TestFootbalDataOrgAPI {
+public class TestFootbalDataOrgAPIGPathGroovyJSON {
 
     @BeforeClass
     public static void setupRestAssured() {
@@ -93,6 +93,8 @@ public class TestFootbalDataOrgAPI {
         System.out.println(allTeamData);
     }
 
+    //.find is a GPath JSON iterator and we loop through the whole JSON or part of it.
+    //This is really powerful
     @Test
     public void extractMapOfElementsWithFind_findAllTeamDataForSingleTeam(){
         Response response = get("competitions/426/teams");
