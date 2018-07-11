@@ -3,6 +3,8 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
@@ -65,8 +67,18 @@ public class TestFormulaOneHistoricalData {
                 get("http://ergast.com/api/f1/2017/circuits.json").
                 then().
                 assertThat().
-                        body("MRData.CircuitTable.Circuits.circuitId", hasSize(20));
+                        body("MRData.CircuitTable.Circuits.circuitId[0]", equalTo("albert_park"));
     }
+
+    @Test
+    public void test_ExtractListOfValuesOfRepeatingNodes(){
+        Response response = get("http://ergast.com/api/f1/2017/circuits.json");
+        ArrayList<String> allCircuitIds = response.path("MRData.CircuitTable.Circuits.circuitId");
+        for(String name : allCircuitIds){
+            System.out.println(name);
+        }
+    }
+
 
 
 }
