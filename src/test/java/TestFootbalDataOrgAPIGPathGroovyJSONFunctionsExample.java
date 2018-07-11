@@ -14,7 +14,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class TestFootbalDataOrgAPIGPathGroovyJSON {
+public class TestFootbalDataOrgAPIGPathGroovyJSONFunctionsExample {
 
     @BeforeClass
     public static void setupRestAssured() {
